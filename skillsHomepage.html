@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Skills Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/new2.css">
+</head>
+<body>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+<div class="pen">
+    <div class="sidepanel">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button class="item-1" style="height: 50px; margin: 5px;">Games</button>
+            </div>
+        </div>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button class="item-2" style="height: 50px; margin: 5px;">Customer Service</button>
+            </div>
+        </div>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button class="item-3" style="height: 50px; margin: 5px;">Registration</button>
+            </div>
+        </div>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button class="item-4" style="height: 50px; margin: 5px;">Test Driven Development</button>
+            </div>
+        </div>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button class="item-5" style="height: 50px; margin: 5px;">Speed Test</button>
+            </div>
+        </div>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button class="item-6" style="height: 50px; margin: 5px;">Achievement</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
+<script>
+    const { easing, tween } = popmotion;
+
+    const sidebarProps = {
+        initialPose: 'closed',
+        open: {
+            x: "0%",
+            delayChildren: 300,
+            staggerChildren: 50
+        },
+        closed: {
+            delay: 500,
+            staggerChildren: 20,
+            x: "-100%"
+        }
+    };
+
+    const itemProps = {
+        initialPose: 'closed',
+        open: {
+            opacity: 1,
+            y: 0,
+            transition: (props) => tween({
+                ...props,
+                duration: 500,
+                ease: props.key === 'opacity' ? easing.linear : easing.backOut
+            })
+        },
+        closed: {
+            opacity: 0,
+            // We're using `i`, but you can pass as many different vars as you wish
+            y: ({ i }) => i * 40
+        }
+    };
+
+    const sidebar = document.querySelector('.sidepanel');
+    const items = Array.from(sidebar.querySelectorAll('.item1'));
+
+    const sidebarPoser = pose(sidebar, sidebarProps);
+    items.forEach((item, i) => sidebarPoser.addChild(item, {
+        ...itemProps,
+        transitionProps: { i }
+    }));
+
+    sidebarPoser.set('open')
+
+
+
+
+
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

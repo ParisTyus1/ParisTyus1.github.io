@@ -2,10 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Personal Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Animation Tutorial</title>
+    <link rel="stylesheet" href="css/new.css">
+
 </head>
 <body>
-<h1>Hello World</h1>
+
+<div class="container">
+    <div class="inner">
+        <h1>Welcome to my personal profile,<br> what would you <br> like to do?</h1>
+        <p>Please, Never stop believing in yourself ! Thanks</p>
+
+        <form>
+            <input class="btn" onclick="window.location.href='skillsHomepage.html' " type="button" value="View my Skills">
+
+            <input type="button" value="Contact me" class="btn">
+
+            <span class="msg">Full name please!</span>
+            <input class="txtfld" placeholder="Name" type="text">
+            <input type="text" placeholder="Email Address then click the Contact me button" class="txtfld">
+
+
+
+
+
+        </form>
+    </div>
+</div>
+
+<script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
+<script>
+    const container = popmotion.styler(document.querySelector('.container'))//animation of elements
+    const formElements = (document.querySelector('.inner'));
+    const msgPop = popmotion.styler(document.querySelector('.msg'));
+    const buttonColor = popmotion.styler(document.querySelector('.btn'));
+    const myAnim = popmotion.tween({
+        from: {
+            scale: .7,
+            opacity: 0,
+            y: -300
+        },
+        to: {
+            scale: 1,
+            opacity: 1,
+            y: 0
+        },
+        duration: 1000
+    });
+
+
+    //put in calculations to calculate center of device instead of hard coding this simpler code
+    const myAnim2 = popmotion.keyframes({//
+        values: [
+            {y: -50, opacity: 0 },
+            {y: -20, opacity: 1 },
+            {y: -20, opacity: 1 },
+            {y: 0, opacity: 0 },
+//transitions work on x,y axis//
+        ],
+        times: [0, .2, .8, 1],
+        duration: 3000
+    });
+
+    myAnim.start({
+        update: container.set,
+        complete: () => { myAnim2.start(msgPop.set); console.log('first anim done') }//first animation done//
+    });
+
+
+    //.start(container.set)
+
+    const stylers = Array
+        .from(formElements.children)//the following js is creating an Array and taking in all the elements//
+        .map(popmotion.styler);
+
+    const animations = Arrays(stylers.length)
+        .fill(popmotion.spring({from: 100, to: 0 }));
+
+    popmotion.stagger(animations, 100)
+        .start((v) => v.forEach((x, i) => stylers[i].set('x', x)))
+
+</script>
+
+
+
 
 </body>
 </html>
